@@ -11,7 +11,7 @@ theme:
   language: zh
   # logo: log.ico
   # favicon: log.ico
-  custom_dir: overrides
+  # custom_dir: overrides
   features:
     - content.code.annotate
     - navigation.tracking
@@ -114,12 +114,31 @@ nav:
     - index.md
     # - 更新记录: changelog.md
     # - 友链: link.md
-  # - Computer Science:
-
-  # - System: 
-
-  # - Mathematics and Physics:
-
-  # - Travel and Photography:
+  - Computer Science:
+    - Oriented Object Programming: 
+      - OOP/index.md
+      - Introduction: OOP/oop1.md
+      - Class: OOP/oop2.md
+    - CS61A:
+      - CS61A/index.md 
+      - Structure and Interpretation of Computer Programs: CS61A/61a1.md
+      - Data Abstraction: CS61A/61a2.md
+      - Oriented Object Programming: CS61A/61a3.md
+    - Python:
+      - Python/index.md
+      - 作业易错题整理: Python/problems.md
+      - Introduction: Python/Py1.md
+  - System:
+    - Computer Organization: 
+      - CO/index.md
+    - Database System: 
+      - DB/index.md
+      - Introduction: DB/DB1.md
+  - Mathematics and Physics:
+    - Ordinary Differential Equations: 
+      - ODE/index.md
+      - 基本定义: ODE/ode1.md
+      - 变量分离: ODE/ode2.md
+  # - Travel and Photography: 
 
   # - English:

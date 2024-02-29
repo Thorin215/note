@@ -1,0 +1,1905 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Thorin's Notebook">
+      
+      
+      
+        <link rel="canonical" href="https://note.thorin215-wang.com/DB/DB1/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../ODE/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.1">
+    
+    
+      
+        <title>Introduction - Thorin's Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=LXGW+WenKai+Screen:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"LXGW WenKai Screen";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeline.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../css/card.css">
+    
+      <link rel="stylesheet" href="../../css/tasklist.css">
+    
+      <link rel="stylesheet" href="../../css/flink.css">
+    
+      <link rel="stylesheet" href="../../css/more_changelog.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-1-introduction" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Thorin&#39;s Notebook" class="md-header__button md-logo" aria-label="Thorin's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Thorin's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Throin215/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Thorin215/note
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../OOP/" class="md-tabs__link">
+          
+  
+    
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../CO/" class="md-tabs__link">
+          
+  
+    
+  
+  System
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ODE/" class="md-tabs__link">
+          
+  
+    
+  
+  Mathematics and Physics
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Thorin&#39;s Notebook" class="md-nav__button md-logo" aria-label="Thorin's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Thorin's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Throin215/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Thorin215/note
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../OOP/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Oriented Object Programming
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_2_1">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Oriented Object Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/oop1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/oop2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../CS61A/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CS61A
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_2_2">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CS61A
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61A/61a1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Structure and Interpretation of Computer Programs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61A/61a2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Abstraction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS61A/61a3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oriented Object Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Python/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_2_3">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/problems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    作业易错题整理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Py1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    System
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../CO/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Computer Organization
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Organization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Database System
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_2">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Database System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#database-systems" class="md-nav__link">
+    Database Systems
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-of-database-systems" class="md-nav__link">
+    Purpose of Database Systems
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#characteristics-of-databases" class="md-nav__link">
+    Characteristics of DataBases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-models" class="md-nav__link">
+    Data Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-of-data" class="md-nav__link">
+    View of data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-and-instance" class="md-nav__link">
+    Schema and Instance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-independence" class="md-nav__link">
+    Data Independence
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-languages" class="md-nav__link">
+    Database Languages
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Languages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-definition-language-ddl" class="md-nav__link">
+    Data Definition Language (DDL)（数据定义语言）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-manipulation-language-dml" class="md-nav__link">
+    Data Manipulation Language (DML)（数据操作语言）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-query-language" class="md-nav__link">
+    SQL Query Language
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-design" class="md-nav__link">
+    DataBase Design
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-engine" class="md-nav__link">
+    DataBase Engine
+  </a>
+  
+    <nav class="md-nav" aria-label="DataBase Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage-manager" class="md-nav__link">
+    Storage Manager
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-processor" class="md-nav__link">
+    Query Processor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-management" class="md-nav__link">
+    Transaction Management(事务管理)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-users" class="md-nav__link">
+    Database Users
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#turing-award" class="md-nav__link">
+    Turing Award
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mathematics and Physics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Mathematics and Physics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ODE/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Ordinary Differential Equations
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_4_1">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Ordinary Differential Equations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ODE/ode1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基本定义
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ODE/ode2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    变量分离
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#database-systems" class="md-nav__link">
+    Database Systems
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-of-database-systems" class="md-nav__link">
+    Purpose of Database Systems
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#characteristics-of-databases" class="md-nav__link">
+    Characteristics of DataBases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-models" class="md-nav__link">
+    Data Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-of-data" class="md-nav__link">
+    View of data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-and-instance" class="md-nav__link">
+    Schema and Instance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-independence" class="md-nav__link">
+    Data Independence
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-languages" class="md-nav__link">
+    Database Languages
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Languages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-definition-language-ddl" class="md-nav__link">
+    Data Definition Language (DDL)（数据定义语言）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-manipulation-language-dml" class="md-nav__link">
+    Data Manipulation Language (DML)（数据操作语言）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-query-language" class="md-nav__link">
+    SQL Query Language
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-design" class="md-nav__link">
+    DataBase Design
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-engine" class="md-nav__link">
+    DataBase Engine
+  </a>
+  
+    <nav class="md-nav" aria-label="DataBase Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage-manager" class="md-nav__link">
+    Storage Manager
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-processor" class="md-nav__link">
+    Query Processor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-management" class="md-nav__link">
+    Transaction Management(事务管理)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-users" class="md-nav__link">
+    Database Users
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#turing-award" class="md-nav__link">
+    Turing Award
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="chapter-1-introduction">Chapter 1 Introduction<a class="headerlink" href="#chapter-1-introduction" title="Permanent link">&para;</a></h1>
+<details class="abstract">
+<summary>Abstract</summary>
+<ul>
+<li>Database Systems</li>
+<li>Database Applications</li>
+<li>Purpose of Database Systems</li>
+<li>View of Data</li>
+<li>Data Models</li>
+<li>Database Languages</li>
+<li>Database Design</li>
+<li>Database Engine</li>
+<li>Database Users and Administrators</li>
+<li>History of Database Systems</li>
+</ul>
+</details>
+<h2 id="database-systems">Database Systems<a class="headerlink" href="#database-systems" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/3381734a9f68b21a3d0e663604d0aed.png" /></p>
+<details class="info dbms">
+<summary>Info</summary>
+<ul>
+<li>Database is a collection of interrelated data about a enterprise, which is managed by a DBMS(Database Management System).</li>
+<li>The primary goal of a DBMS is to provide a way to store and retrieve database information that is both convenient and efficient. </li>
+<li>Management of data involves both deﬁning structures for storage of information and providing mechanisms for the manipulation of information. </li>
+<li>The database system must ensure the safety of the information stored, despite system crashes or attempts at unauthorized access. </li>
+<li>If data are to be shared among several users, the system must provide concurrency control mechanisms to avoid possible anomalous results. </li>
+</ul>
+</details>
+<details class="question difference between file processor and dbms">
+<summary>Question</summary>
+<ul>
+<li>A file-processing system can only coordinate physical access of data, while a DBMS can coordinate both phisical and logical access.</li>
+<li>A file-processing system only allow accessing data through the way determined in advance, while a DBMS allow doing this flexibly.</li>
+<li>A file-processing system allows multiple programs access diffrent data at the same time, or 2 programs access the same file at the same time if they both have read-only access to it. On the contrary, a DBMS allows multiple users accessing the same data at the same time.</li>
+<li>In a file-processing system, a file written by one program may be unreadable for another program. But in a DBMS, data duplications are reduced by make the data physically available 
+to all the programs possessing access to it.</li>
+</ul>
+</details>
+<h2 id="purpose-of-database-systems">Purpose of Database Systems<a class="headerlink" href="#purpose-of-database-systems" title="Permanent link">&para;</a></h2>
+<p><em>In the early days, database applications were built directly on top of </em><em>file systems</em><em>，which leads to:</em></p>
+<ul>
+<li>Data redundancy（<strong>数据冗余</strong>）and inconsistency（<strong>不一致</strong>）</li>
+<li>
+<p>Multiple file formats, duplication of information in different files</p>
+</li>
+<li>
+<p>Data isolation（<strong>数据孤立，数据孤岛</strong>） — multiple files and formats</p>
+</li>
+<li>
+<p>Difficulty in accessing data (<strong>存取数据困难</strong>）</p>
+</li>
+<li>
+<p>Need to write a new program to carry out each new task</p>
+</li>
+<li>
+<p>Integrity Problem(<strong>完整性问题</strong>）</p>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>Integrity constraints become “buried” in program code rather than being stated explicitly(显式的),数据与约束条件存储在此程序中，不是显式的</li>
+<li>Example:  “account balance &gt;=1”</li>
+<li>Hard to add new constraints or change existing ones</li>
+</ul>
+</div>
+<ul>
+<li>Atomicity problems(原子性问题)</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li>Transfer of funds from one to another(<strong>转账问题</strong>)</li>
+<li>Failures may leave database in an <strong>inconsistent state</strong> with partial updates carried out</li>
+</ul>
+</div>
+<ul>
+<li>Concurrent access anomalies(并发访问异常)</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li>Concurrent access needed for performance</li>
+<li>Uncontrolled concurrent accesses can lead to inconsistencies</li>
+<li>Example: Two people reading a balance (say 100) and updating it by saving money (say 50 each) at the same time</li>
+</ul>
+</div>
+<ul>
+<li>Security Problems(安全性问题)</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li>银行审计(Audit)</li>
+<li>权限(Privilege)</li>
+</ul>
+</div>
+<h2 id="characteristics-of-databases">Characteristics of DataBases<a class="headerlink" href="#characteristics-of-databases" title="Permanent link">&para;</a></h2>
+<details class="abstract">
+<summary>Abstract</summary>
+<ul>
+<li>data persistence(数据持久性)</li>
+<li>convenience in accessing data(数据访问便利性)</li>
+<li>data integrity （数据完整性）</li>
+<li>concurrency control for multiple users(多用户并发控制)</li>
+<li>failure recovery（故障恢复） </li>
+<li>security  control（安全控制）</li>
+</ul>
+</details>
+<h2 id="data-models">Data Models<a class="headerlink" href="#data-models" title="Permanent link">&para;</a></h2>
+<ul>
+<li>A collection of tools for describing </li>
+<li>Data (数据)</li>
+<li>Data relationships(联系)</li>
+<li>Data semantics(语义)</li>
+<li>
+<p>Data constraints(约束)</p>
+</li>
+<li>
+<p><strong>Relational Model(关系模型)</strong></p>
+</li>
+<li>Object-based data models </li>
+<li>Object-oriented  (面向对象数据模型)</li>
+<li>Object-relational(对象-关系模型模型)</li>
+<li>Semistructured data model  (XML)(半结构化数据模型)</li>
+<li>Other older models:</li>
+<li>Network model  (网状模型)</li>
+<li>Hierarchical model(层次模型)</li>
+<li>Entity-Relationship Model(实体联系模型)</li>
+</ul>
+<p><img alt="" src="https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/20240226143439.png" /></p>
+<p>这里ID可以确定一行，称之为key</p>
+<h2 id="view-of-data">View of data<a class="headerlink" href="#view-of-data" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/b19a02f33dee02df92f59884ac23b2b.png" /></p>
+<div class="admonition info view of data">
+<p class="admonition-title">Info</p>
+<ul>
+<li>物理模式:描述数据如何存储</li>
+<li>逻辑模式:描述了存储的数据以及之间关系</li>
+<li>视图模式:应用程序出于安全等目的隐藏了大量细节，且是多样的</li>
+</ul>
+</div>
+<div class="admonition note 目的">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Hide the complexities(隐藏复杂性)</li>
+<li>Enhance the adaptation to changes(增强适应性)</li>
+</ul>
+</div>
+<h2 id="schema-and-instance">Schema and Instance<a class="headerlink" href="#schema-and-instance" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Similar to types and variables in programming languages</li>
+<li>Logical Schema（<strong>逻辑模式</strong>）– the logical structure of the database </li>
+<li>Example: The database consists of information about a set of customers and accounts and the relationship between them</li>
+<li>Analogous to type information of a variable in a program</li>
+<li>Physical schema （<strong>物理模式</strong>） – the overall physical  structure of the database </li>
+<li>Instance（<strong>实例</strong>） – the actual content of the database at a particular point in time Analogous to the value of a variable</li>
+</ul>
+<h2 id="data-independence">Data Independence<a class="headerlink" href="#data-independence" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Physical Data Independence（物理数据独立性）– the ability to modify the physical schema without changing the logical schema</li>
+<li>Applications depend on the logical schema</li>
+<li>
+<p>In general, the interfaces between the various levels and components should be well defined so that changes in some parts do not seriously influence others.</p>
+</li>
+<li>
+<p>Logical Data Independence(逻辑数据独立性) – the ability to modify the logical schema without changing the user view schema</p>
+</li>
+</ul>
+<h2 id="database-languages">Database Languages<a class="headerlink" href="#database-languages" title="Permanent link">&para;</a></h2>
+<details class="abstract">
+<summary>Abstract</summary>
+<ul>
+<li>Data Definition Language (DDL) </li>
+<li>Data Manipulation Language (DML) </li>
+<li>SQL Query Language</li>
+<li>Application Program Interface （API）</li>
+</ul>
+</details>
+<h3 id="data-definition-language-ddl">Data Definition Language (DDL)（数据定义语言）<a class="headerlink" href="#data-definition-language-ddl" title="Permanent link">&para;</a></h3>
+<p>Specification notation for defining the database schema
+Example:    </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">create</span><span class="w"> </span><span class="n">table</span><span class="w"> </span><span class="nf">instructor</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">ID</span><span class="w">         </span><span class="nf">char</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w">                           </span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">name</span><span class="w">       </span><span class="nf">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">dept_name</span><span class="w">  </span><span class="nf">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">salary</span><span class="w">     </span><span class="nf">numeric</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>DDL compiler generates a set of table templates stored in a data dictionary（数据字典）</li>
+<li>Data dictionary contains metadata (元数据， i.e., data about data)</li>
+<li>Database schema </li>
+<li>Integrity constraints（完整性约束）<ul>
+<li>Primary key (ID uniquely identifies instructors)（主健）</li>
+<li>Referential integrity (references constraint in SQL)（参照完整性）</li>
+<li><strong>e.g.</strong> dept_name value in any instructor tuple must appear in department relation</li>
+</ul>
+</li>
+<li>Authorization（权限）</li>
+<li>常用的语句关键字有 CREATE、DROP、ALTER 等</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">CREATE</span><span class="w"> </span><span class="n">TABLE</span><span class="w"> </span><span class="nf">表名</span><span class="p">(</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">列名1</span><span class="w"> </span><span class="n">数据类型</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">列名2</span><span class="w"> </span><span class="n">数据类型</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">列名3</span><span class="w"> </span><span class="n">数据类型</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">...</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">ALTER</span><span class="w"> </span><span class="n">TABLE</span><span class="w"> </span><span class="n">表名</span><span class="p">;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">eg</span><span class="err">：</span><span class="n">ALTER</span><span class="w"> </span><span class="n">TABLE</span><span class="w"> </span><span class="n">表名</span><span class="w"> </span><span class="n">ADD</span><span class="w"> </span><span class="n">列名</span><span class="w"> </span><span class="n">数据类型</span><span class="p">;</span><span class="err">（</span><span class="n">添加一个列</span><span class="err">）</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="n">ALTER</span><span class="w"> </span><span class="n">TABLE</span><span class="w"> </span><span class="n">表名</span><span class="w"> </span><span class="n">CHANGE</span><span class="w"> </span><span class="n">列名</span><span class="w"> </span><span class="n">新列名</span><span class="w"> </span><span class="n">新数据类型</span><span class="p">;</span><span class="err">（</span><span class="n">修改列名</span><span class="err">）</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="n">ALTER</span><span class="w"> </span><span class="n">TABLE</span><span class="w"> </span><span class="n">表名</span><span class="w"> </span><span class="n">DROP</span><span class="w"> </span><span class="n">列名</span><span class="p">;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">DROP</span><span class="w"> </span><span class="n">TABLE</span><span class="w"> </span><span class="n">表名</span><span class="p">;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">DROP</span><span class="w"> </span><span class="n">DATABASE</span><span class="w"> </span><span class="n">数据库名</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<h3 id="data-manipulation-language-dml">Data Manipulation Language (DML)（数据操作语言）<a class="headerlink" href="#data-manipulation-language-dml" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Language for accessing and manipulating the data organized by the appropriate data model</li>
+<li>DML also known as <strong>query</strong> language</li>
+<li>Two classes of languages </li>
+<li>Procedural（过程式） – user specifies what data is required and how to get those data </li>
+<li>Declarative (nonprocedural， 陈述式，非过程式) – user specifies what data is required without specifying how to get those data</li>
+<li><strong>SQL</strong> is the most widely used query language</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">INSERT</span><span class="w"> </span><span class="n">INTO</span><span class="w"> </span><span class="nf">表名</span><span class="w"> </span><span class="p">(</span><span class="n">字段1</span><span class="p">,</span><span class="n">字段2</span><span class="p">,...)</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="p">(</span><span class="n">某值</span><span class="p">,</span><span class="n">某值</span><span class="p">,...),(</span><span class="n">某值</span><span class="p">,</span><span class="n">某值</span><span class="p">,...);</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">UPDATE</span><span class="w"> </span><span class="n">表名</span><span class="w"> </span><span class="n">SET</span><span class="w"> </span><span class="n">列名</span><span class="o">=</span><span class="n">新值</span><span class="w"> </span><span class="n">WHERE</span><span class="w"> </span><span class="n">限定条件</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">DELETE</span><span class="w"> </span><span class="n">FROM</span><span class="w"> </span><span class="n">表名</span><span class="w"> </span><span class="n">WHERE</span><span class="w"> </span><span class="n">限定条件</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<h3 id="sql-query-language">SQL Query Language<a class="headerlink" href="#sql-query-language" title="Permanent link">&para;</a></h3>
+<p>SQL: widely used non-procedural language</p>
+<details class="example">
+<summary>Example</summary>
+<p><img alt="" src="https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/ff065e32c9b48fac901e0a856fd02ef.png" /></p>
+</details>
+<h2 id="database-design">DataBase Design<a class="headerlink" href="#database-design" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/2d3a0e7711d91cff9381188ebd56973.png" /></p>
+<h2 id="database-engine">DataBase Engine<a class="headerlink" href="#database-engine" title="Permanent link">&para;</a></h2>
+<details class="abstract">
+<summary>Abstract</summary>
+<ul>
+<li>The storage manager</li>
+<li>The query processor  </li>
+<li>The transaction management component.
+<img alt="" src="https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/20240229214018.png" /></li>
+</ul>
+</details>
+<h3 id="storage-manager">Storage Manager<a class="headerlink" href="#storage-manager" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A program module that provides the interface between the low-level data stored in the database and the application programs and queries submitted to the system.</li>
+<li>The storage manager is responsible to the following tasks: </li>
+<li>Interaction with the OS file manager </li>
+<li>Efficient storing, retrieving and updating of data</li>
+<li>The storage manager components include:</li>
+<li>File manager</li>
+<li>Buffer manager</li>
+<li>Authorization and integrity manager</li>
+<li>Transaction manager</li>
+<li>Covered in Part five - Chapters 12 , 13, 14 </li>
+<li>The storage manager implements several data structures as part of the physical system implementation:</li>
+<li><strong>Data files</strong> -- store the database itself</li>
+<li><strong>Data dictionary</strong> --  stores metadata about the structure of the database, in particular the schema of the database.</li>
+<li><strong>Indices</strong> --  can provide fast access to data items.  A database index provides pointers to those data items that hold a particular value.  </li>
+<li><strong>Statistical data</strong></li>
+</ul>
+<h3 id="query-processor">Query Processor<a class="headerlink" href="#query-processor" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The query processor components include:</li>
+<li><strong>DDL interpreter</strong> --  interprets DDL statements and records the definitions in the data dictionary.</li>
+<li><strong>DML compiler</strong> -- translates DML statements in a query language into an evaluation plan consisting of low-level instructions that the query evaluation engine understands.<ul>
+<li><strong>The DML compiler</strong> performs query optimization; that is, it picks the lowest cost evaluation plan from among the various alternatives.</li>
+</ul>
+</li>
+<li><strong>Query evaluation engine</strong> -- executes low-level instructions generated by the DML compiler.</li>
+</ul>
+<p><img alt="" src="https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/20240229214329.png" /></p>
+<h3 id="transaction-management">Transaction Management(事务管理)<a class="headerlink" href="#transaction-management" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>A transaction</strong> （事务）is a collection of operations that performs a single logical function in a database application.</li>
+<li><strong>Recover Manager</strong> (恢复管理器)ensures that the database remains in a consistent (correct) state despite system failures (e.g., power failures and operating system crashes) and transaction failures.</li>
+<li><strong>Concurrency-control manager</strong>（并发控制管理器） controls the interaction among the concurrent transactions, to ensure the consistency of the database.</li>
+</ul>
+<h2 id="database-users">Database Users<a class="headerlink" href="#database-users" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/b4f3b75b041f663149f542652a287bb.png" /></p>
+<h2 id="turing-award">Turing Award<a class="headerlink" href="#turing-award" title="Permanent link">&para;</a></h2>
+<p>Charles W. Bachman(1924-2017)
+Edgar F. Codd (1923-2003)
+Jim Gray(1944-2007)
+Michael Stonebraker (1943~ )</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月29日 21:54:59</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月29日 21:54:59</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 <a href="https://github.com/Thorin215"  target="_blank" rel="noopener">Thorin</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Thorin215/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+        <script src="../../js/baidu-tongji.js"></script>
+      
+        <script src="https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

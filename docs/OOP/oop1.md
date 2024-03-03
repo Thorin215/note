@@ -157,7 +157,7 @@ int main()
 - 使用`new`动态分配内存
     - `Stock *pstock = new Stock("Furry Mason", 50, 2.5);`
 
-!!! Info default constructor(隐式构造函数)
+!!! Info "default constructor(隐式构造函数)"
 
     - 如果没有提供任何构造函数，则`C++`将自动提供默认构造函数，它是默认构造函数的隐式版本，不做任何工作
     - 默认构造函数没有任何参数，因为声明中不包含

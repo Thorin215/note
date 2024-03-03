@@ -41,6 +41,7 @@ markdown_extensions:
   - toc:
       permalink: true
       toc_depth: 4
+  - admonition
   - meta
   - def_list
   - attr_list
@@ -58,8 +59,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.smartsymbols  #智能符号
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tabbed:
       alternate_style: true 
   - pymdownx.tasklist:
@@ -128,6 +129,9 @@ nav:
       - Python/index.md
       - 作业易错题整理: Python/problems.md
       - Introduction: Python/Py1.md
+    - Advanced Data Structure and Algorithm: 
+      - ADS/index.md
+      - AVL Trees, Splay Trees, and Amortized Analysis: ADS/ADS1.md
   - System:
     - Computer Organization: 
       - CO/index.md

@@ -12,4 +12,3 @@ counter: False
     There were sixpence all over the ground, but he looked up and saw the moon.
     </div>
 
-

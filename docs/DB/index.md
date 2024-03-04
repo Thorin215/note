@@ -1,7 +1,11 @@
 # 数据库系统
 
 !!! Abstract
-    浙江大学 “高级数据结构与算法分析” 课程及相关知识笔记
+    浙江大学 “数据库系统” 课程及相关知识笔记
     
     - Prof:孙建伶
     - TA:聂俊哲/石宇新
+  
+!!! Success
+    - [x] [chapter 1 Introduction](DB1.md)
+    - [x] [chapter 2 Relational Model](DB2.md)

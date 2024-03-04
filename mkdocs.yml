@@ -138,11 +138,15 @@ nav:
     - Database System: 
       - DB/index.md
       - Introduction: DB/DB1.md
+      - Relational Model: DB/DB2.md
   - Mathematics and Physics:
     - Ordinary Differential Equations: 
       - ODE/index.md
       - 基本定义: ODE/ode1.md
       - 变量分离: ODE/ode2.md
+  - Paper Reading:
+    - Paper/index.md
+    - DDPM: Paper/DDPM.md
   # - Travel and Photography: 
 
   # - English:

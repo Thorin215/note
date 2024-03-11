@@ -6,6 +6,10 @@
     * Prof:刘海风
     * TA：秦嘉俊/郭家豪
 
+!!! Success
+    - [x] [Computer Abstractions and Technology](CO1.md)
+    - [x] [Arithmetic for Computer](CO2.md)
+
 !!! Example "Lab"
 
     |Lab|内容|

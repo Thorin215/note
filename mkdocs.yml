@@ -129,12 +129,16 @@ nav:
       - Python/index.md
       - 作业易错题整理: Python/problems.md
       - Introduction: Python/Py1.md
+      - Basic Data Types: Python/Py2.md
     - Advanced Data Structure and Algorithm: 
       - ADS/index.md
       - AVL Trees, Splay Trees, and Amortized Analysis: ADS/ADS1.md
+      - Red-Black Trees and B+ Trees: ADS/ADS2.md
   - System:
     - Computer Organization: 
       - CO/index.md
+      - Computer Abstraction and Technology : CO/CO1.md
+      - Arithmetic for Computer : CO/CO2.md
     - Database System: 
       - DB/index.md
       - Introduction: DB/DB1.md

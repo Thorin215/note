@@ -143,6 +143,7 @@ nav:
       - DB/index.md
       - Introduction: DB/DB1.md
       - Relational Model: DB/DB2.md
+      - SQL介绍: DB/DB3.md
   - Mathematics and Physics:
     - Ordinary Differential Equations: 
       - ODE/index.md

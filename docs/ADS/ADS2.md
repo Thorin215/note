@@ -18,7 +18,7 @@ counter: True
     - 除了常规的父子以及键值信息之外，红黑树还有一个颜色的属性，并且当左右子结点为空时，必须是黑色的NIL结点（它没有键值），这与一般的NULL不一样。
     - 黑高是绝对严格的平衡要求，而红色结点则是少量不平衡的因素，并且定义控制了红色结点的个数，也就控制了不平衡因素的影响
   
-## Insertion
+### Insertion
 
 ??? question "为什么默认插入红色节点"
     假设我们每次都插入黑色结点，那么定义第五条一定会被破坏，因此每次插入都必须调整（除了从空树插入的那次）；但是如果插入红色结点，定义第二条（仅在插入空树时）和定义第四条仅仅是有可能被破坏，因此直观来看插入红色结点会比插入黑色结点需要的调整更少。除此之外，在学完红黑树删除后，红黑树删除黑色结点时的复杂情况也暗示了插入红色应当是更好的选择。
@@ -38,7 +38,7 @@ counter: True
     ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/f0d08129e015af3ada1c7be7ae3f38a.png)
     ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/20240309152747.png)
 
-## Deletion
+### Deletion
 
 !!! Abstract "基础删除操作"
     - 如果$X$没有孩子，直接删除就好，没有任何后顾之忧；
@@ -79,3 +79,63 @@ counter: True
 
 ??? Note "时间复杂度"
     此时我们可以总结并计算出删除操作的时间复杂度。首先我们最多用$O(\log n)$的时间找到删除结点，最多 1 次交换和 1 个删除的操作。接下来如果删除后没有问题则到此结束；否则根据分析，情况 1、3 和 4 在问题解决前最多进去一次，因为 4 可以直接解决，3 直接进入 4 然后解决，1 如果进入 3 和 4 也可以马上解决，进入 2 后也因为父结点是红色可以马上解决。因此关键在于情况 2 可能出现很多次，但最多也只是树高$O(\log n)$次，因为每次都会上推 1 格。总而言之，因为情况 1、3 和 4 在问题解决前最多进去一次，所以最多 3 次旋转加上$O(\log n)$次颜色调整可以解决问题，**因此我们有如下结论：一棵有 $n$个内部结点的红黑树删除一个结点的时间复杂度为$O(\log n)$**
+
+
+## B+ Tree
+
+!!! Abstract "Definition"
+    A B+ tree of order M is a tree with the following structural properties:
+    - The root is either a leaf or has between 2 and M children.
+    - All nonleaf nodes (except the root) have between $ \lceil M/2 \rceil$ and $M$ children.
+    - All leaves are at the same depth.
+    Assume each nonroot leaf also has between $ \lceil M/2 \rceil$ and $M$ children.
+    
+    ??? Example
+        ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/cf3e34d29d8eb9b62b057f5ce0d46d5.png)
+
+### B+ Tree的操作
+
+#### search
+
+$B+$树中的节点包含有多个键。假设需要查找的是$k$，那么从根节点开始，从上到下递归的遍历树。在每一层上，搜索的范围被减小到包含了搜索值的子树中。子树值的范围被它的父节点的键确定。因为是从根节点开始的二分法查找，所以查找一个键的代码如下：
+
+!!! Bug "code"
+    ```cpp
+    BTreeNode *BTreeNode::search(int k) {
+      // 找到第一个大于等于待查找键 k 的键
+      int i = 0;
+      while (i < n && k > keys[i]) i++;
+
+      // 如果找到的第一个键等于 k , 返回节点指针
+      if (keys[i] == k) return this;
+
+      // 如果没有找到键 k 且当前节点为叶子节点则返回NULL
+      if (leaf == true) return NULL;
+
+      // 递归
+      return C[i]->search(k);
+    }
+    ```
+
+根据 B+ 树定义，需要在非叶结点层逐层和存储的键值比较从而确定去哪一个孩子结点。因此时间复杂度有两个重要因素：一个是树的高度，另一个是每一层搜索需要的时间。树的高度非常好计算，最差的情况也是每个结点都存 $⌈M/2⌉$ 个结点，因此最大高度是$O(\log_{\lceil M/2 \rceil} N)$的。然后每一层因为键值是排好序的，因此用二分查找找到要去哪个孩子结点，复杂度为 O(\log_2 M)，综合可得搜索的时间复杂度为$O(\log_2 M · log_{⌈M/2⌉} N) = (\log_2 M/2 + 1) ·\frac{\log_2 N}{\log_2 M/2} = O(\log N)$，注意推导中使用了换底公式.
+
+#### Insert
+
+PPT上的伪代码已经十分清楚，就是找到插入的位置，然后插入看结点是否放得下，放不下就分裂，如果分裂后子结点个数也过多则继续向上一层分裂，直到根结点孩子爆满则将根结点分裂并生成新的根结点，当然还要注意即使不分裂也可能需要按$B+$树定义**更新上层结点**。我们知道树有$O(log_{⌈M/2⌉} N)$层，每层操作最多是$O(M)$的（如更新结点或者分裂，无非就是更改$O(M)$个键值以及修改$O(M)$个父子指针），因此整体时间复杂度为$O(M · \log_{\lceil M/2 \rceil} N) = O(\frac{M}{\log M} \log N)$。
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/337ca66414f25cffd161811a799ada7.png)
+
+??? Example
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/351e1ed2c808f6b4264800a67d2c3cf.png)
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/241d327316c2b4131d1437cfdfdd7b0.png)
+
+#### Delete
+
+PPT 没有要求，但想法很简单，因为只需把插入时分裂结点改为合并键值或孩子数量少的结点，当然需要注意的是，为了确保合并后键值数量不会超过 M 且减少合并次数，可以先看看兄弟结点是不是键值还很多，多的话拿一个过来即可，事实上整体时间复杂度和插入分析类似，也为 $O(\frac{M}{\log M} \log N)$。
+
+### B+ Tree的意义
+
+通过降低树的高度，极大减少了数据库查询等需要的磁盘操作次数。
+
+!!! Example
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/20240312145738.png)

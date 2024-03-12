@@ -44,6 +44,28 @@ print("my name is {:s}, my age is {:d}, my height is {:.lf} ".format(name, age, 
 print(f"my name is {name}, my age is {age}, my height is {height:.lf} ".format(name, age, height))
 ```
 
+## 字符串
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/3bf34231dbb8f6baea4912b2a67143e.png)
+
+!!! Abstract
+    在python语言中,一般对于片段，引号后面的值都是取不到的。    
+
+## 转义字符
+
+|字符|含义|
+|:--:|:--:|
+|`\'` |单引号|
+|`\"` |双引号|
+|\a |响铃|
+|\b |退格(Backspace)|
+|\n |换行|
+|\v |纵向制表符|
+|\t |横向制表符|
+|\r |回车|
+|\ooo |最多三位 八进制，例如：\12代表换行|
+|\xyy |十六进制数，yy代表的字符，例如：\x0a代表换|
+
 ## 运算符优先级
 
 |优先级 |运算符 |描述| 结合性|

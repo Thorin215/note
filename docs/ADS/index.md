@@ -12,4 +12,4 @@
 
 !!! Success
     - [x] [Chapter 1 : AVL Trees, Splay Trees, and Amortized Analysis](ADS1.md)
-    - [ ] [chapter 2 : Red-Black Trees and B+ Trees](ADS2.md)
+    - [x] [chapter 2 : Red-Black Trees and B+ Trees](ADS2.md)

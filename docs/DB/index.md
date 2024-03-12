@@ -9,3 +9,4 @@
 !!! Success
     - [x] [chapter 1 Introduction](DB1.md)
     - [x] [chapter 2 Relational Model](DB2.md)
+    - [x] [chapter 3 Introduction to SQL](DB3.md)

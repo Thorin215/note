@@ -2,279 +2,306 @@
 counter: True  
 ---
 
-# Chapter 1 Introduction
+# chapter 1 C++语言特性
 
 !!! Abstract
-    - 抽象
-    - 封装和数据隐藏
-    - 多态
-    - 继承
-    - 代码的可重用性
+    - 课上例程
+    - 语法记录
 
-## Class(类)
-
-类是一种将抽象转化为用户定义类型的C++工具，他将数据类型和操纵数据的方法组合成一个整洁的包。
-
-这里如下是`CS61A`的`Account`以及对应的`C++`版本
-
-```py
-class Account:
-    def __init__(self, account_holder):
-        self.balance = 0
-        self.holder = account_holder
-    def deposit(self, amount):
-        self.balance = self.balance + amount
-        return self.balance
-    def withdraw(self, amount):
-        if amount > self.balance:
-            return 'Insufficient funds'
-        self.balance = self.balance - amount
-        return self.balance
-```
+## The First C++ Program
 
 ```cpp
 #include<iostream>
-#include<string>
 using namespace std;
-
-class Account
-{
-private:
-    /* data */
-    int accountNumber;
-    string accountHolderName;
-    double balance;
-public:
-    Account(int accountNumber = 0, string accountHolderName = "No name", double balance = 0);
-    /*
-    Account();//default constructor(默认构造函数)
-    已经提供显示构造函数后，编译器不会再提供默认构造函数，所以这里会报错，只能手动提供默认构造函数
-    */
-    void withdraw(double amount);
-    void deposit(double amount);
-    void display();
-}; 
-
-void Account::display()
-{
-    cout << "Account Number: " << accountNumber << endl;
-    cout << "Account Holder Name: " << accountHolderName << endl;
-    cout << "Balance: " << balance << endl;
-}
-
-
-Account::Account(int accountNumber, string accountHolderName, double balance)
-{
-    this->accountNumber = accountNumber;
-    this->accountHolderName = accountHolderName;
-    this->balance = balance;
-}
-
-void Account::withdraw(double amount)
-{
-    if (balance < amount)
-    {
-        cout << "Insufficient balance" << endl;
-    }
-    else
-    {
-        balance -= amount;
-    }
-}
-
-void Account::deposit(double amount)
-{
-    balance += amount;
-}
-
 int main()
 {
-    Account a1(101, "John", 5000); //隐式调用
-    //Account a1 = Account(101, "John", 5000); 显式调用
-    a1.display();
-    a1.deposit(2000);
-    a1.display();
-    return 0;
+    cout << "hello" << "world" << endl;
+    return;
 }
 ```
 
-### 访问控制
-
-!!! Info
-    `private`和`public`描述了对类成员的访问控制。使用类对象的程序都可以直接访问公有部分，但是私有对象只能通过公有成员函数(或友元函数)来访问。
-
-- 无论类成员是数据成员还是成员函数，都可以在类的公有部分或私有部分中声明它。但由于隐藏数据是OOP主要目标之一，因此通常数据项放在**私有部分**而组成类接口放在**公有部分**
-- 通常，使用私有函数来处理不属于公有接口的部分
-
-### 封装
-
-- 类设计尽可能将公有接口与实现细节分开。公有接口表示设计的抽象组件，将实现细节放在一起并将他们与抽象分开称之为**封装**
-- 数据隐藏(将数据放在类的私有部分中)也是一种**封装**，将实现细节隐藏在私有部分(私有接口)也是**封装**
-
-### 实现成员函数
-
-!!! Abstract
-    类的描述的第二部分：为那些类声明的原型表示的成员函数提供代码
-    - 定义成员函数时，使用作用域解析运算符`(::)`来标识函数所属的类
-    - 类的方法可以访问类的`private`组件
-
-#### Inline Function
-
-!!! Info
-    在C语言中，如果一些函数被频繁调用，不断地有函数入栈，即函数栈，会造成栈空间或栈内存的大量消耗。为了解决这个问题，特别的引入了`inline`修饰符，表示为内联函数。(栈空间就是指放置程式的局部数据也就是函数内数据的内存空间，在系统下，栈空间是有限的，假如频繁大量的使用就会造成因栈空间不足所造成的程式出错的问题，函数的死循环递归调用的最终结果就是导致栈内存空间枯竭。)
-
-??? Example
-
-    ```cpp
-    class Account
-    {
-    private:
-        int number;
-        void set_num(){number += 1;}//Inline Function
-    }；
-    /*或者使用inline修饰符*/
-    class Account
-    {
-    private:
-        int number;
-        void set_num();//Inline Function
-    }；
-    inline void set_num()
-    {
-        number += 1;
-    }
-    ```
-    
-可以类比为`#define`,函数会在调用它的地方进行替换。(一般内联函数不建议超过十行)，还要确保内联函数对多文件程序中的所有文件都是可用的，最简便的方法是：将内联定义放在定义类的头文件里。
-
-#### Constructor(构造函数)
-
-- 构造函数虽然没有返回值，但是没有被声明为`void`，实际上，构造函数没有声明类型。
-- 隐式调用构造函数
-    - `Stock garment("Furry Mason", 50, 2.5);`
-- 显式调用构造函数
-    - `Stock gaement = Stock("Furry Mason", 50, 2.5);`
-- 使用`new`动态分配内存
-    - `Stock *pstock = new Stock("Furry Mason", 50, 2.5);`
-
-!!! Info "default constructor(隐式构造函数)"
-
-    - 如果没有提供任何构造函数，则`C++`将自动提供默认构造函数，它是默认构造函数的隐式版本，不做任何工作
-    - 默认构造函数没有任何参数，因为声明中不包含
-    - 如果为类提供了非默认构造函数，而没有提供默认构造函数，则类似下面的声明将出错(禁止创建未初始化的对象)
-        - `Stock stock1;`
-    - 定义默认构造函数有两种方法
-        - 给已有构造函数提供所有参数默认值
-        - 函数重载来定义一个没有参数的构造函数 
-
-- `C++11`列表初始化(提供一个构造函数参数列表匹配的内容)：
-    - `Stock stock1 = {"name", 2, 2.0};`  
-    - `Stock stock1 {"name", 2, 2.0};`
-
-#### Destructor(析构函数)
-
-- 如果构造函数使用`new`来分配内存,则使用`delete`来释放空间
-- 如果没有使用`new`,则会让编译器生成一个隐式析构函数
-
-- `C++`中对象`new`出来和直接声明的区别(类似malloc)
-    - 首先，最直观的，new出来的对象需要使用指针接收，而直接声明的不用。例如 A* a=new A() 与A a（）。
-    - `new`出来的对象是直接使用堆空间，而局部声明一个对象是放在栈中。
-    - `new`出来的对象类似于申请空间，因此需要delete销毁，而直接声明的对象则在使用完直接销毁。
-    - `new`出来的对象的生命周期是具有全局性，譬如在一个函数块里new一个对象，可以将该对象的指针返回回去，该对象依旧存在。而声明的对象的生命周期只存在于声明了该对象的函数块中，如果返回该声明的对象，将会返回一个已经被销毁的对象。
-    - `new`对象指针用途广泛，比如作为函数返回值、函数参数等
-
-
-#### This Pointer(this 指针)
-
-`this`指针指向用来调用成员函数的对象(this被作为隐藏参数传递给方法)
-如果要防止`this`被调用修改所指向的对象的值，则可以在函数声明后面加上`const`
-
-??? Info
-    最初的UNIX实现使用C++前端cfront将C++程序转化为C程序。会将限定符`ClassName::`转换为函数参数(指向对象的指针)
-
-## 对象数组
-
-- 在没有显式构造函数的情况下(或显式构造函数有默认值)的情况下，可以直接如下定义
-    - `Stock mystuff[4];`或者可以寄希望于自动补足未初始化的对象
-- 否则要为每个元素调用构造函数
-  
-```cpp
-const int num = 4;
-Stock stocks[num] = {
-    Stock("A", 2, 2.0),
-    Stock("B", 3, 3.0),
-    Stock("C", 4, 4.0),
-    Stock("D", 5, 5.0)
-};
-```
-
-## 类作用域
-
-### 作用域为类的常量
-
-如果希望所有对象共享一个常量，这样做是错误的例子：
+## Read Input
 
 ```cpp
-class Bakery:
+#include<iostream>
+using namespace std;
+int main()
 {
-private:
-    const int months = 12; 
-    double costs[months];   
+    int number;
+    cin >> number;
+    cout << "hello" << "world" << number << endl;
+    return;
 }
 ```
 
-!!! Warning 
-    声明类只是描述了对象的形式，并没有创建对象。因此，在创建对象前，将没有用于存储值的空间。
+## 与C语言对比
 
-#### 1.声明一个枚举
+- **Strengths:**
+  - Efficient programs
+  - Direct access to machine
+  - Flexible
 
-在类声明中声明的枚举的作用域为整个类，因此可以用枚举为整型变量提供作用域为整个类的符号名称。
+- **Weakness:**
+  - Insufficient type checking
+  - Poor support for programming-in-the-large
+  - TBD
+  
+## String
 
-!!! Example
-    同为这个`Bakrey`类
-    ```cpp
-    class Bakery:
-    {
-    private:
-        enum {enum = 12};
-        double costs[Months];
-    }
-    ```
+!!! Info
 
-**所有对象中都不包含枚举(枚举不会创建类数据成员)**，作用域为整个域的代码遇到它时，会进行替换。
+    * `string` is a class in C++. (需要 `#include <string>`)  
+    * 可以像定义其他类型一样定义变量。 ***e.g.*** `string str;`
+    * 可以对字符串初始化，用 `cin, cout` 输入输出。
 
-#### 2.使用关键字`static`
+### Assignment for string
 
-!!! Example
-    在`const`加上`static`
-    ```cpp
-    class Bakery:
-    {
-    private:
-        static const int months = 12; 
-        double costs[months];   
-    }
-    ```
-
-这个`static`类型的变量会被与其他静态变量一起存储，而不是存储在对象中。
-
-### 作用域内枚举
-
-传统的枚举存在一些问题，其中之一是两个枚举定义中的枚举量可能发生冲突。
-
-!!! Example
-    如下，`egg Small`和`t_shirt Small`位于相同的作用域中，他们将发生冲突。
-    ```cpp
-        enum egg {Small, Medium, Large, Jumbo};
-        enum t_shirt {Small, Medium, Large, Jumbo};
-    ```
-
-- `C++`提供了一种新枚举，作用域为类。
+- 与`char`数组对比
 
 ```cpp
-enum class egg {Small, Medium, Large, Jumbo};
+char charr1[20];
+char charr2[20] = "ABC";
+
+string str1;
+string str2 = "ABC";
+
+str1 = str2; //legal
+charr1 = charr2; //illegal
 ```
 
-- `class`也可以替换为`struct`
+### Concatenation for string 
 
-但是作用域内枚举不能进行隐式类型转换，只能进行显式类型转换。
+- `str3 = str1 + str2;`
+- `str1 += str2;`
+- `str1 += "ABC";`
+
+!!! Warning
+    ``` C++
+    string name;
+    name = name + "Johnson";
+    ```
+
+    这里 `name` 已经有确定值了，因为这里是一个 class 态，为空字符串。
+
+### Ctors
+
+- string(const char*cp, int len);
+- string(const string& s2, int pos);
+- string(const string& s2, int pos, int len);
+
+```cpp
+#include<string>
+#include<iostream>
+using namespace std;
+int main()
+{
+    string str1, str2("world");
+    str1 = "hello";
+    cout << str1 << str2 << endl;
+    return;
+}
+```
+
+- 可以使用`str.empty()`来判断是否为空
+
+!!! Warning
+    要注意行为调用与函数调用的区别
+
+### alter string(不常考)
+
+- assign();
+- insert(const string &, int len);
+- insert(int pos, const string &s);
+- erase();
+- append();
+- replace();
+
+### search string
+
+- find()
+
+## File I/O
+
+```cpp
+#include<ifstream>
+#include<ofstream>
+/*现在合并为了<fstream>*/
+ofstream File1("C:\\test.txt");
+File1 << "Hello" << endl;
+ofstream File2("C:\\test.txt");
+File2 >> str;
+```
+
+## Stream
+
+- `iostream`处理控制台IO
+- `fstream`处理命名文件IO
+- `stringstream`完成内存`string`的IO
+
+## Vars
+
+- global vars
+- static global vars
+- local vars
+- static local vars
+
+```cpp
+int i; //global vars
+string str;
+static int j; // static global vars
+
+f(){
+    int k; // local vars
+    static int j; //static local
+}
+```
+
+## Momery Model
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/b5b7a84b9d41ebbb6a8061aec4f490c.png)
+
+- extern : 说明在外部定义(多文件工程)
+- static global var inhibits access from outside the .ccp file(访问控制)
+- static local var initialized at its first time(persistence) 
+
+## Pointers to object
+
+!!! Example
+    - string s = “hello”;(object itself)
+    - string* ps = &s;(a pointer to an object)
+    
+
+### Operators with Pointers
+
+- `&` : get address
+- `*` : get the object
+- `->` :call the function
+
+### Assignment
+
+- string s1, s2;
+  - s1 = s2;
+- string *ps1, *ps2;
+  - ps1 = ps2;
+
+### Dynamic memory allocation
+
+- new(返回一个指针)
+  - new int;
+  - new Stash;
+  - new int[10];
+- delete
+  - delete p;
+  - delete [] p;
+
+!!! Example
+    - int *psome = new int [10];
+    - delete [] psome;
+
+!!! Example "The new-delete mech"
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/6f4e49e874723dcdba9c39d1dddb274.png)
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/57107efe80e3e6a55c9261397051f78.png)
+
+!!! danger "Tips for new and delete"
+    - Don't use delete to free memory that new didn't allocate.
+    - Don't use delete to free the same block of memory twice  in succession.
+    - Use delete [] if you used new [] to allocate an array.
+    - Use delete (no brackets) if you used new to allocate a  single entity.
+    - It's safe to apply delete to the null pointer (nothing  happens).
+    
+
+## References(引用)
+
+!!! tip "References are a new data type in C++"
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/62189c7c9a5de0b1249a8e7232c6dbb.png)
+
+**修改引用值也会导致原值发生改变，效果类似指针**
+
+- int x = 3;
+- int &y = x;
+- const int &z = x; (z值不能修改)
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/03d8906ba044aaafe6dd301b1b1b545.png)
+
+!!! tip "Rules of references"
+    - References must be initialized when defined
+    - Initialization establishes a binding
+    - Bindings don’t change at run time, unlike pointers(binding可以理解为绑定)
+    - No references to references
+    
+    ??? Example
+        ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/8f469cce8a21c5f5ea010148716d810.png)
+
+!!! danger "Pointers vs. References"
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/5b0f1e5abeb74d0fd8bb92b78bc05fb.png)
+    - ailas ：别名
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/0af3e3d4d166ef0e5d2072ee9c7d915.png)
+    - 指针可以拥有引用
+    - 引用不能拥有指针
+
+## const
+
+- declares a variable to have a constant value
+
+!!! bug "code"
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/d52adada11be84ee51fccc93825e4a0.png)
+
+### constants
+
+- Constants are variables
+    - Observe scoping rules
+    - Declared with “const” type modifier
+- A const in C++ defaults to internal linkage
+    - the compiler tries to avoid creating storage for a const
+        - holds the value in its symbol table.
+    - extern forces storage to be allocated.
+
+!!! abstract
+    **编译期常量**指的就是程序在编译时就能确定这个常量的具体值
+    **非编译期常量**就是程序在**运行时才能确定**常量的值,因此也称为运行时常量
+
+#### Compile time constants
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/6f32e2069b97b2f3ca6f60a8f5c37e5.png)
+
+#### Run-time constants
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/7d26f5995a9e2ba5fe82bb837e2f65f.png)
+
+### Aggregates
+
+!!! Note ""
+    可以将const用于aggregates，但会分配存储空间。在这些情况下，const的意思是“不能更改的存储空间”。但是，该值不能在编译时使用，因为编译器在编译时不需要知道存储的内容。
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/6deda12669f4dfb291b45a72e064738.png)
+
+### Pointers and const 
+
+**const跟谁近就修饰谁**
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/16d435eb21f6ca1c2a96b3944fae658.png)
+
+!!! Question 
+    - string p1("fred");
+    - const string *p = &p1;
+    - string const *p = &p1;
+    - string *const p = &p1;
+
+    ??? note "Answer"
+        3与4意义一致 
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/1f628a9efbc82b68cc6c425691242df.png)
+
+- Can always treat a non-const value as const
+- You cannot treat a constant object as non-constant without an explicit cast  (const_cast)可以将const改成varible
+
+
+!!! tip "Passing and returning addresses"
+    - Passing a whole object may cost you a lot.	It is  better to pass by a pointer.	But it’s possible for the  programmer to take it and modify the original value.
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/b02841d98c43e7de9a0bb623fbc4d2a.png)
+    - In fact, whenever you’re passing an address into a  function, you should make it a const if at all  possible.
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/7bb3092bbf102447094ffcf275118ca.png)
+    
+    !!! danger "xww的编程建议"
+        - 建议传入指针或者引用，并加上const，可以使得代码运行的更快
+     

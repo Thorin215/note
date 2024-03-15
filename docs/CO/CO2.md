@@ -202,3 +202,128 @@ Dividend (被除数) $\div$ Divisor (除数)
 - Overflow and division-by-zero don’t produce errors
     - Just return defined results
     - Faster for the common case of no error
+
+## Float
+
+- Reasoning
+    - Larger number range than integer rage
+    - Fractions
+    - Numbers like e (2.71828) and π(3.14159265....)
+- Representation for non-integral numbers 
+    - Including very small and very large numbers
+- Like scientific notation
+    - $–2.34 × 10^{56}$规范的科学计数法
+    - $+0.002 × 10^{–4}$首位为0
+    - $+987.02 × 10^{9}$
+
+### IEEE Floating-Point Format
+
+- S: sign bit (0 $\rightarrow$ non-negative, 1 $\rightarrow$ negative)
+- Normalize significand: $1.0 ≤ |\textbf{significand}| < 2.0$
+    - Always has a leading pre-binary-point 1 bit, so no need to represent it 
+explicitly (hidden bit)
+    - Significand is Fraction with the “1.” restored
+- Exponent: excess representation: actual exponent + Bias
+    - Ensures exponent is unsigned
+    - **偏移量**：Single: Bias = 127; Double: Bias = 1023
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/b19c30f16419cbe921b3901fd761066.png)
+
+### Range
+
+- 单精度范围
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/02fb34e20c097699258d45e38f530b8.png)
+
+- 双精度范围
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/bba8967e0598d3f6d12d92014da6e85.png)
+
+- Relative precision
+    - all fraction bits are significant
+    - Single: approx $2^{–23}$
+        - Equivalent to $23 × \log_{10}2 ≈ 23 × 0.3 ≈ 7 $decimal digits of precision
+    - Double: approx 2–52
+        - Equivalent to $52 × \log_{10}2 ≈ 52 × 0.3 ≈ 16 $decimal digits of precision
+
+### Denormal Numbers
+
+* $Exponent=000\ldots 0$   
+非规格化数，让数在较小时能逐渐下溢出。    
+$x=(-1)^s\times((0+Fraction)\times 2^{1-Bias})$  
+注意此时指数是 $1-Bias=-126/-1022$.   
+    * Denormal with $Fraction = 000...0$ we define $x=0$
+* $Exponent=111\ldots 1, Fraction=000\ldots 0$   
+表示 $\pm \inf$  
+* $Exponent=111\ldots 1, Fraction\neq 000\ldots 0$ 
+表示 *NaN* (Not-a-Number)  
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/def0f48ed9e846e614fcea7c82258b8.png)
+
+### addition
+
+将指数更小的浮点数的有效部分右移对齐(Truncation)
+
+!!! Example
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/cc85b981778bd99bc0197775211c6d8.png)
+
+### FP Adder Hardware
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/047bf24d7a828f7d3ec805b760dac80.png)
+
+*蓝色线为控制通路，黑色线为数据通路*
+
+- Much more complex than integer adder
+- Doing it in one clock cycle would take too long
+    - Much longer than integer operations
+    - Slower clock would penalize all instructions
+- FP adder usually takes several cycles
+    - Can be pipelined
+  
+### Floating-Point Multiplication
+
+$(s1\cdot 2^{e1}) \cdot (s2\cdot 2^{s2}) = (s1\cdot s2)\cdot 2^{e1+e2}$
+
+* Add exponents
+* Multiply the significands
+* Normalize
+* Over/Underflow?  
+有的话要抛出异常，通过结果的指数判断。
+* Rounding
+* Sign
+
+注意 Exponet 中是有 Bias 的，两个数的 exp 部分相加后还要再减去 Bias. 
+
+??? Example
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/617685c5ea5dd3a9249ed9f86a25c15.png)
+
+**Data Flow**
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/20240313201813.png)
+
+* 右边往回的箭头: Rounding 后可能会进位。
+* Incr 用于标准化结果，与右侧 Shift Right 配合。
+
+### Parallelism and Computer Arithmetic: Associativity 
+
+- 浮点数运算受运算顺序影响
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/99a0cc84c95beff3629711dd5878707.png)
+
+## FP Instructions in RISC-V
+
+- Separate FP registers: f0, …, f31
+    - double-precision
+    - single-precision values stored in the lower 32 bits
+- FP instructions operate only on FP registers 
+    - Programs generally don’t do integer ops on FP data, or vice versa
+    - More registers with minimal code-size impact
+- FP load and store instructions
+    - flw, fld
+    - fsw, fsd
+- Single-precision arithmetic
+    - fadd.s, fsub.s, fmul.s, fdiv.s, fsqrt.s
+        - e.g., fadds.s f2, f4, f6
+- Double-precision arithmetic
+    - fadd.d, fsub.d, fmul.d, fdiv.d, fsqrt.d
+        - e.g., fadd.d f2, f4, f6
+- Single- and double-precision comparison
+    - 

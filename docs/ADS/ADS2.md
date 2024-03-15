@@ -85,6 +85,7 @@ counter: True
 
 !!! Abstract "Definition"
     A B+ tree of order M is a tree with the following structural properties:
+
     - The root is either a leaf or has between 2 and M children.
     - All nonleaf nodes (except the root) have between $ \lceil M/2 \rceil$ and $M$ children.
     - All leaves are at the same depth.
@@ -92,6 +93,10 @@ counter: True
     
     ??? Example
         ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/cf3e34d29d8eb9b62b057f5ce0d46d5.png)
+
+!!! Quote
+    - [一个演示网站](https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html)
+    - [一个不错的blog](https://www.cnblogs.com/JayL-zxl/p/14304178.html)
 
 ### B+ Tree的操作
 

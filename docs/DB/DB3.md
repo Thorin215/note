@@ -2,7 +2,7 @@
 counter: True  
 ---
 
-# Chapter 3 SQL Introducction
+# Chapter 3 SQL Introduction
 
 !!! Abstract
     - Overview of the SQL Query Language

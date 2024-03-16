@@ -114,7 +114,7 @@ nav:
   - Home:
     - index.md
     # - 更新记录: changelog.md
-    # - 友链: link.md
+    - 友链: link.md
   - Computer Science:
     - Oriented Object Programming: 
       - OOP/index.md

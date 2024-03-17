@@ -326,4 +326,9 @@ $(s1\cdot 2^{e1}) \cdot (s2\cdot 2^{s2}) = (s1\cdot s2)\cdot 2^{e1+e2}$
     - fadd.d, fsub.d, fmul.d, fdiv.d, fsqrt.d
         - e.g., fadd.d f2, f4, f6
 - Single- and double-precision comparison
-    - 
+    - feq.s, flt.s, fle.s
+    - feq.d, flt.d, fle.d
+    - Result is 0 or 1 in integer destination register
+        - Use beq, bne to branch on comparison result
+- Branch on FP condition code true or false
+    - B.cond

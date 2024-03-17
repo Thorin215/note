@@ -12,4 +12,5 @@
 
 !!! Success
     - [x] [Chapter 1 : AVL Trees, Splay Trees, and Amortized Analysis](ADS1.md)
-    - [x] [chapter 2 : Red-Black Trees and B+ Trees](ADS2.md)
+    - [x] [Chapter 2 : Red-Black Trees and B+ Trees](ADS2.md)
+    - [x] [Chapter 3 : Inverted File Index](ADS3.md)

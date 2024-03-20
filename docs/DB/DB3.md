@@ -320,6 +320,9 @@ Corresponds to the **Cartesian product** operation of the relational algebra.
         where student.dept_name <> course.dept_name
     ```
 
+!!! bug "要注意自然连接的语法规范"
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/f489c67d7ce908116750664f233e81d.png)
+
 ### The Rename Operation
 
 The SQL allows renaming relations and attributes using the **`as`** clause.  

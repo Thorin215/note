@@ -33,3 +33,16 @@
 !!! question
     print(bin(12.5))的输出是0b1100.1
     - bin()不能处理float
+
+!!! Week 3
+
+!!! question
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/649d8c5a50706e58f094b5e4b62d7c0.png)
+
+!!! question 
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/3fdb2ff93fd9ab39d5a9cb60ad7a58b.png)
+
+!!! question
+    ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/fbb1e46660861cf6ad8bf200163cecc.png)
+
+![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/755c688a38525830c1cad5f77e698f3.png)

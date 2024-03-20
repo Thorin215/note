@@ -154,6 +154,9 @@ nav:
   - Paper Reading:
     - Paper/index.md
     - DDPM: Paper/DDPM.md
+  - Thinking and Writing:
+    - Think/index.md
+    #- Writing/index.md
   # - Travel and Photography: 
 
   # - English:

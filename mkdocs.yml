@@ -136,9 +136,11 @@ nav:
       - AVL Trees, Splay Trees, and Amortized Analysis: ADS/ADS1.md
       - Red-Black Trees and B+ Trees: ADS/ADS2.md
       - Inverted File Index : ADS/ADS3.md 
+      - Leftist Heaps and Skew Heaps: ADS/ADS4.md
   - System:
     - Computer Organization: 
       - CO/index.md
+      - Hits 题解: MISC/bit.md
       - Computer Abstraction and Technology : CO/CO1.md
       - Arithmetic for Computer : CO/CO2.md
     - Database System: 
@@ -146,6 +148,7 @@ nav:
       - Introduction: DB/DB1.md
       - Relational Model: DB/DB2.md
       - SQL介绍: DB/DB3.md
+      - 中级SQL: DB/DB4.md
   - Mathematics and Physics:
     - Ordinary Differential Equations: 
       - ODE/index.md

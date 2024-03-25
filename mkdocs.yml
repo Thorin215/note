@@ -130,6 +130,7 @@ nav:
       - 作业易错题整理: Python/problems.md
       - Introduction: Python/Py1.md
       - Basic Data Types: Python/Py2.md
+      - Basic Syntax: Python/Py3.md
     - Advanced Data Structure and Algorithm: 
       - ADS/index.md
       - Homework Review : ADS/HW.md

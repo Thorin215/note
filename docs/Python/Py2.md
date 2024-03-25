@@ -44,12 +44,18 @@ print("my name is {:s}, my age is {:d}, my height is {:.lf} ".format(name, age, 
 print(f"my name is {name}, my age is {age}, my height is {height:.lf} ".format(name, age, height))
 ```
 
+!!! warning "format对齐"
+    - 居中对齐 (:^)(数据居中，此选项需和 width 参数一起使用)
+    - 靠左对齐 (:<)(对于大部分对象时为默认)
+    - 靠右对齐 (:>)(数字情况下默认)
+    - 居中对齐 (:=)(数据右对齐，同时将符号放置在填充内容的最左侧，该选项只对数字类型有效)
+
 ## 字符串
 
 ![](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/3bf34231dbb8f6baea4912b2a67143e.png)
 
 !!! Abstract
-    在python语言中,一般对于片段，引号后面的值都是取不到的。    
+    在python语言中,一般对于片段，引号后面的值都是取不到的.
 
 ## 转义字符
 

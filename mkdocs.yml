@@ -11,7 +11,7 @@ theme:
   language: zh
   # logo: log.ico
   # favicon: log.ico
-  # custom_dir: overrides
+  custom_dir: overrides
   features:
     - content.code.annotate
     - navigation.tracking
@@ -138,12 +138,16 @@ nav:
       - Red-Black Trees and B+ Trees: ADS/ADS2.md
       - Inverted File Index : ADS/ADS3.md 
       - Leftist Heaps and Skew Heaps: ADS/ADS4.md
+    - Mechine Learning In the Data Analysis:
+      - ML/index.md
+      - Beyasian Data Analysis: ML/ML4.md
   - System:
     - Computer Organization: 
       - CO/index.md
       - Hits 题解: MISC/bit.md
       - Computer Abstraction and Technology : CO/CO1.md
       - Arithmetic for Computer : CO/CO2.md
+      - Instruction : CO/CO3.md
     - Database System: 
       - DB/index.md
       - Introduction: DB/DB1.md

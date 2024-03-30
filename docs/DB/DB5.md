@@ -24,11 +24,10 @@ counter: True
 
 从高级语言（如 C）访问数据库，主要是下面两种方式：
 
-动态SQL dynamic SQL
+!!! tip "书上写的是Dynamic SQL(通用程序可以通过一组函数(对于过程式语言)或者方法(对于面向对象的语言)来连接到数据库服务器并与之通信),动态SQL允许程序在运行时以字符串形式来构建SQL查询，提交查询，然后以每次一个元组的方式把结果存入程序变量中。"
 
 * **API**(Application Program Interface) -- A general-purpose program can connect to and communicate with a database server using a collection of functions.  
-函数库
-* **Embedded SQL(嵌入式SQL)** -- provides a means by which a program can interact with a database server.   
+* **Embedded SQL(嵌入式SQL)** -- provides a means by which a program can interact with a database server. 
 把 SQL 语句嵌入到语言内
     * The SQL statements are translated at *compile time* into function calls.   
     * At runtime,  these function calls connect to the database  using an API that provides dynamic SQL facilities.  
@@ -57,29 +56,14 @@ SQL 与 C 语言存在鸿沟（如 select 得到的是集合，但是 C 语言�
 #### JDBC
 
 **JDBC** is a Java API for communicating with database systems supporting SQL.  
-1.调用驱动程序管理器来创建对象
-2.抛出异常并进行检查
-
-``` Java
-public static void JDBCexample(String dbid, String userid, String passwd) 
-        { 
-     try { 
-   Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@db.yale.edu:2000:univdb", userid, passwd); 
-          Statement stmt = conn.createStatement(); 
-              ... Do Actual Work ...
-          stmt.close();	
-          conn.close();	
-     }		
-     catch (SQLException sqle) { 		
-          System.out.println("SQLException : " + sqle);		
-     }		
-        }
-```
 
 * Open a connection
 * Create a “statement” object
 * Execute queries using the Statement object to send queries and fetch results
 * Exception mechanism to handle errors
+
+1. 调用驱动程序管理器来创建对象
+2. 抛出异常并进行检查
 
 ??? Example
     * Update to database
@@ -113,7 +97,36 @@ public static void JDBCexample(String dbid, String userid, String passwd)
         if (rset.wasNull()) Systems.out.println(“Got null value”);
     ```
 
-**Prepared Statement**  
+##### Open a connection(连接到数据库)
+
+``` Java
+public static void JDBCexample(String dbid, String userid, String passwd) 
+        { 
+     try { 
+   Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@db.yale.edu:2000:univdb", userid, passwd); 
+          Statement stmt = conn.createStatement(); 
+              ... Do Actual Work ...
+          stmt.close();
+          conn.close();
+     }
+     catch (SQLException sqle) {
+          System.out.println("SQLException : " + sqle);
+     }
+        }
+```
+
+通过使用DriverManager类的`getConnection()`方法打开一个连接，之后才能执行SQL语句
+
+!!! tip "getConnection"
+    - 
+
+##### 向数据库系统传递SQL语句
+
+##### 异常与资源管理
+
+##### 获取查询结果
+
+##### Prepared Statement(预备语句)
 
 ??? Example "Prepared Statement"
     ``` Java
@@ -179,6 +192,24 @@ public static void JDBCexample(String dbid, String userid, String passwd)
 * `conn.setAutoCommit(true)` turns on automatic commit.
 
 所有的数据库功能都是通过 Java 封装好的类来实现的。
+
+
+#### SQLJ
+
+SQLJ: embedded SQL in Java
+``` Java
+#sql iterator deptInfoIter ( String dept name, int avgSal);
+	deptInfoIter iter = null;
+	#sql iter = { select dept_name, avg(salary) as avgSal from instructor
+			 group by dept name };
+	while (iter.next()) {
+		   String deptName = iter.dept_name();
+	      int avgSal = iter.avgSal();
+	      System.out.println(deptName + " " + avgSal);
+	}
+	iter.close();
+```
+嵌入都要 `#sql` 标识，最后会被编译器转化为 Java 的类。
 
 #### ODBC
 
@@ -260,3 +291,177 @@ Each database system supporting ODBC provides a "driver" library that must be li
 * By default, each SQL statement is treated as a separate transaction that is committed automatically.
     * Can turn off automatic commit on a connection `SQLSetConnectOption(conn, SQL_AUTOCOMMIT, 0)} `
     * Transactions must then be committed or rolled back explicitly by `SQLTransact(conn, SQL_COMMIT)` or `SQLTransact(conn, SQL_ROLLBACK)`
+  
+
+#### Embedded SQL
+
+A language to which SQL queries are embedded is referred to as a **host language**, and the SQL structures permitted in the host language comprise embedded SQL.  
+如把 SQL 嵌入到 C 语言，那么 C 语言是 host.  
+
+在编译前，有一个预编译器，将 SQL 语句翻译。
+
+**EXEC SQL** statement is used in the host language to identify embedded SQL request to the preprocessor (in Java, `# SQL { ... };`)
+
+**Issues with Embedded SQL**
+
+* Mark the start point and end point of Embedded SQL `EXEC  SQL  <statement>；  //C`
+* Communication between database and programming language ***e.g.*** SQLCA、SQLDA
+* Address the mismatching issue between SQL and host lanugage.  
+Handle result (set) with cursor
+Mapping of basic data types ***e.g.*** SQL:  Date $\rightarrow$ C: char(12)
+
+??? Example
+    ``` C
+    insert、delete、update、select(single record)
+    main( )
+    {  EXEC SQL INCLUDE SQLCA; //声明段开始
+        EXEC SQL BEGIN DECLARE SECTION;
+        char account_no [11];    //host variables(宿主变量)声明
+        char branch_name [16];
+        int  balance;  
+    EXEC SQL END DECLARE SECTION;//声明段结束
+    EXEC SQL CONNECT  TO  bank_db  USER Adam Using Eve; 
+    scanf (“%s  %s  %d”, account_no, branch_name, balance);
+    EXEC SQL insert into account 
+                    values (:account_no, :branch_name, :balance);
+    If (SQLCA.sqlcode ! = 0)    printf ( “Error!\n”);
+    else       printf (“Success!\n”);
+    }
+    ```
+    最开始声明段中的 host 语句，可以用在 SQL 语句里。
+
+两点不平衡：没有集合；没有 NULL；没有日期类型
+
+可以在编译时进行类型检查，但 ODBC 只有在运行时才有。
+
+* Static： Embedded SQL statements( include relation names and attribute names) are hard coded in program.
+* Dynamic：Embedded SQL statements are built at run time
+
+## Procedural Constructs in SQL
+
+SQL provides a **module** language   
+Permits definition of procedures in SQL, with *if-then-else* statements, *for* and *while* loops, etc.
+
+Stored Procedures  
+
+* Can store procedures in the database 
+* then execute them using the *call* statement
+* permit external applications to operate on the database without knowing about internal details
+
+### SQL Functions
+
+??? Example 
+    <div align=center> <img src="http://cdn.hobbitqia.cc/202303271145253.png" width = 60%/> </div>
+
+SQL 函数的返回值可以是一个 table. 
+
+??? Example
+    <div align=center> <img src="http://cdn.hobbitqia.cc/202303271146651.png" width = 60%/> </div>
+
+### SQL Procedures
+
+有输入参数(`in`)和输出参数(`out`)
+
+??? Example
+    <div align=center> <img src="http://cdn.hobbitqia.cc/202303271148988.png" width = 60%/> </div>
+
+### Procedural Constructs
+
+Compound statement: `begin ... end`, 
+
+* May contain multiple SQL statements between `begin` and `end`.
+* Local variables can be declared within a compound statements
+
+* **`While`** and **`repeat`** statements  
+***e.g.***
+``` SQL
+declare n integer default 0;
+while n < 10 do
+    set n = n + 1
+end while 		            		
+        repeat
+    set n = n  – 1
+        until n = 0
+end repeat
+```
+* **`For`** loop
+Permits iteration over all results of a query
+    ***e.g.***  
+    ``` SQL
+    declare n  integer default 0;
+    for r as
+        select budget from department 
+        where dept_name = ‘Music’ 
+        do 
+            set n = n - r.budget 
+    end for
+    ```
+    r 表示返回的每一行
+
+??? Example "Example procedure"
+    <div align=center> <img src="http://cdn.hobbitqia.cc/202303271151546.png" width = 70%/> </div>
+
+### External Language Functions/Procedures
+
+SQL 可以访问由 C 语言定义的函数（过程）
+
+??? Example
+    ``` SQL
+    create procedure dept_count_proc(in dept_name varchar(20),  count integer)
+    language C 
+    external name ’ /usr/avi/bin/dept_count_proc’ 
+    create function dept_count(dept_name varchar(20))
+    returns integer
+    language C
+    external name ‘/usr/avi/bin/dept_count’
+    ```
+
+可能比较危险，放在虚拟机（Java）或者独立的线程
+
+## Triggers
+
+A **`trigger`** is a statement that is executed automatically by the system as a side effect of a modification to the database.  
+
+Trigger -  **ECA rule**
+
+* ***E***: Event （ insert, delete ，update）
+* ***C***: Condition  
+* ***A***: Action
+
+To design a trigger mechanism, we must: 
+
+* Specify the conditions under which the trigger is to be executed.
+* Specify the actions to be taken when the trigger executes.
+
+??? Example
+    <div align=center> <img src="http://cdn.hobbitqia.cc/202303271203228.png" width = 60%/> </div>
+
+??? Example "time_slot_id Example"
+    <div align=center> <img src="http://cdn.hobbitqia.cc/202303271209395.png" width = 60%/> </div>
+    <div align=center> <img src="http://cdn.hobbitqia.cc/202303271213079.png" width = 60%/> </div>
+
+    这里 time_slot_id 不是主键，因此删除不会引起其他影响。但我们可以设计一个触发器，用来检查当前课程的 time_slot_id 是否在表内。  
+    第二个触发器表示，time_slot_id 已经被删完了，但依然有课程在引用，就要 rollback.  
+
+* Triggering event can be insert, delete or update
+* Triggers on update can be restricted to specific attributes  
+***e.g.*** after(before) update of  takes on grade
+* Values of attributes before and after an update can be referenced
+    * referencing old row as:  for deletes and updates
+    * referencing new row as: for inserts and updates
+
+??? Example "Trigger to Maintain credits_earned value"
+    <div align=center> <img src="http://cdn.hobbitqia.cc/202303271217377.png" width = 60%/> </div>
+
+    如果本来挂科，或者没有成绩，更新后不再挂科而且有成绩，就把学分加上去。
+
+要慎用触发器，用在刀刃上，可能会引发连锁反应。
+
+Instead of executing a separate action for each affected row, a single action can be executed for all rows affected by a transaction
+
+* Use **`for each statement`**  instead of **`for each row`**
+* Use **`referencing old table`** or **`referencing new table`** to refer to temporary tables (called transition tables) containing the affected rows
+* Can be more efficient when dealing with SQL statements that update a large number of rows
+
+??? Example
+    <div align=center> <img src="http://cdn.hobbitqia.cc/202303271223362.png" width = 60%/> </div>

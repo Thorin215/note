@@ -9,6 +9,7 @@
 !!! Success
     - [x] [Computer Abstractions and Technology](CO1.md)
     - [x] [Arithmetic for Computer](CO2.md)
+    - [x] [Instructions : Language of the Computer](CO3.md) 
 
 !!! Example "Lab"
 

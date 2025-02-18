@@ -26,6 +26,6 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.TOKEN }}
-        publish_dir: gh-pages 
+        publish_dir: ./site  # 设置发布目录
         force_orphan: true
 

@@ -144,7 +144,7 @@ nav:
   - System:
     - Computer Organization: 
       - CO/index.md
-      - Hits 题解: MISC/bit.md
+      # - Hits 题解: MISC/bit.md
       - Computer Abstraction and Technology : CO/CO1.md
       - Arithmetic for Computer : CO/CO2.md
       - Instruction : CO/CO3.md

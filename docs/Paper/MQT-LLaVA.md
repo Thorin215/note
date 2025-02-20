@@ -8,17 +8,18 @@
 >
 > - Our exploration of the trade-off between the accuracy and computational cost brought about by the number of visual tokens facilitates future research to achieve the best of both worlds.
 
-!!! question "什么是Matryoshka Representation Learning"
+??? question "什么是Matryoshka Representation Learning"
       - 人类感知世界是从粗到细粒度，但是模型往往把信息压缩成一个向量。而不同的粒度（维度）的学习可以共享不同的语义空间，比压缩成单独一个向量的方法好。
       
       ![image-20250220192811817](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/image-20250220192811817.png)
       ![image-20250220192943496](https://blog-pic-thorin.oss-cn-hangzhou.aliyuncs.com/image-20250220192943496.png)
 
       !!! tip "MRL训练方法"
-            - MRL框架下我们先提前指定下后续推理可能要用到的维度。比如最大是2048，最小是8。`nesting_list = [8, 16, 32, 64, 128, 256, 512, 1024, 2048]`
-            - 这里有两种方法来训练:
-                - Matryoshka Representation Learning（MRL）：该种方法是在bert后面接9个mlp层。mlp(768,8),(768,16),...(768,2048)。然后把bert编码得到的768维向量，在同时通过这9个mlp得到不同维度的向量，然后计算9个loss，累加起来进行训练。
-                - Efficient Matryoshka Representation Learning（MRL-E）：该种方法是在bert后面接1个mlp层。mlp(768,2048)，将bert出来的768维度的向量，通过分类层，得到2048维度的向量。取前8个维度，来得到一个向量；取前16个维度，得到一个向量；依次类推，得到9个向量，然后计算9个loss。累加起来进行训练。正如图1中的方法。
+              
+              - MRL框架下我们先提前指定下后续推理可能要用到的维度。比如最大是2048，最小是8。`nesting_list = [8, 16, 32, 64, 128, 256, 512, 1024, 2048]`
+              - 这里有两种方法来训练:
+                  - Matryoshka Representation Learning（MRL）：该种方法是在bert后面接9个mlp层。mlp(768,8),(768,16),...(768,2048)。然后把bert编码得到的768维向量，在同时通过这9个mlp得到不同维度的向量，然后计算9个loss，累加起来进行训练。
+                  - Efficient Matryoshka Representation Learning（MRL-E）：该种方法是在bert后面接1个mlp层。mlp(768,2048)，将bert出来的768维度的向量，通过分类层，得到2048维度的向量。取前8个维度，来得到一个向量；取前16个维度，得到一个向量；依次类推，得到9个向量，然后计算9个loss。累加起来进行训练。正如图1中的方法。
 
 ## 研究动机
 

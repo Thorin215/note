@@ -163,6 +163,7 @@ nav:
     - Paper/index.md
     - DDPM: Paper/DDPM.md
     - MQT-LLaVA: Paper/MQT-LLaVA.md
+    - mPLUG-Owl: Paper/mPLUG-Owl.md
   - Thinking and Writing:
     - Think/index.md
     - 序言: Think/Intro.md

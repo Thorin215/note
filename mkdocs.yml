@@ -165,6 +165,7 @@ nav:
     - MQT-LLaVA: Paper/MQT-LLaVA.md
     - mPLUG-Owl: Paper/mPLUG-Owl.md
     - LLaVAOneVision: Paper/LLaVAOneVision.md
+    - ViT: Paper/ViT.md
   - Thinking and Writing:
     - Think/index.md
     - 序言: Think/Intro.md

@@ -166,6 +166,7 @@ nav:
     - mPLUG-Owl: Paper/mPLUG-Owl.md
     - LLaVAOneVision: Paper/LLaVAOneVision.md
     - ViT: Paper/ViT.md
+    - CLIP: Paper/CLIP.md
   - Thinking and Writing:
     - Think/index.md
     - 序言: Think/Intro.md

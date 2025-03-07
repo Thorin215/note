@@ -171,6 +171,9 @@ nav:
       - LLaVAOneVision: Paper/MLLM/LLaVAOneVision.md
       - ViT: Paper/MLLM/ViT.md
       - CLIP: Paper/MLLM/CLIP.md
+      - SAM: Paper/MLLM/SAM.md
+      - Stream-Video: Paper/MLLM/Stream-Video.md
+      - GROUNDHOG: Paper/MLLM/GROUNDHOG.md
     - Autoregressive:
       - Autoregressive: Paper/AR/Autoregressive Model.md
       - Eff-VAR: Paper/AR/Eff-VAR.md

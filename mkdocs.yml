@@ -161,12 +161,22 @@ nav:
       - 变量分离: ODE/ode2.md
   - Paper Reading:
     - Paper/index.md
-    - DDPM: Paper/DDPM.md
-    - MQT-LLaVA: Paper/MQT-LLaVA.md
-    - mPLUG-Owl: Paper/mPLUG-Owl.md
-    - LLaVAOneVision: Paper/LLaVAOneVision.md
-    - ViT: Paper/ViT.md
-    - CLIP: Paper/CLIP.md
+    - Diffusion:
+      - DDPM: Paper/Diffusion/DDPM.md
+      - StyleStudio: Paper/Diffusion/StyleStudio.md
+      - RecFG: Paper/Diffusion/RecFG.md
+    - Multi-Modal :
+      - MQT-LLaVA: Paper/MLLM/MQT-LLaVA.md
+      - mPLUG-Owl: Paper/MLLM/mPLUG-Owl.md
+      - LLaVAOneVision: Paper/MLLM/LLaVAOneVision.md
+      - ViT: Paper/MLLM/ViT.md
+      - CLIP: Paper/MLLM/CLIP.md
+    - Autoregressive:
+      - Autoregressive: Paper/AR/Autoregressive Model.md
+      - Eff-VAR: Paper/AR/Eff-VAR.md
+      - VAR: Paper/AR/VAR.md
+      - Infinity: Paper/AR/Infinity.md
+      - Fractal Generative Models: Paper/AR/Fractal Generative Models.md
   - Thinking and Writing:
     - Think/index.md
     - 序言: Think/Intro.md

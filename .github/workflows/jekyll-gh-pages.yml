@@ -2,30 +2,34 @@ name: Deploy MkDocs to GitHub Pages
 on:
   push:
     branches:
-      - main  # 监听 main 分支的推送事件
+      - main
+
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2  # 检出代码
-    - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/checkout@v4
       with:
-        python-version: '3.8'  # 设置 Python 版本
+        fetch-depth: 0
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
     - name: Install dependencies
       run: |
-        pip install mkdocs  # 安装 mkdocs
-        pip install mkdocs-material  # 安装 mkdocs-material 主题
+        pip install mkdocs
+        pip install mkdocs-material
         pip install mkdocs-heti-plugin
-        pip3 install mkdocs-git-revision-date-localized-plugin
+        pip install mkdocs-git-revision-date-localized-plugin
         pip install mkdocs-changelog-plugin
     - name: Build the MkDocs site
-      run: mkdocs build  # 构建 MkDocs 网站
+      run: mkdocs build
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        github_token: ${{ secrets.TOKEN }}
-        publish_dir: ./site  # 设置发布目录
-        force_orphan: true
-
+        folder: ./site
+        force: true

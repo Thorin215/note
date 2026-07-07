@@ -4,7 +4,7 @@ counter: False
 
 #  Thorin's Notebook!
 
-[**About me**](https://thorin215-wang.com)
+[**About me**](https://chunwang.site)
 
 !!! note ""
 

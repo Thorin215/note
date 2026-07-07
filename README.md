@@ -1,2 +1,2 @@
 # my notebook  
-[note.thorin215-wang.com](http://note.thorin215-wang.com/)
+[note.chunwang.site](http://note.chunwang.site/)

@@ -9,28 +9,11 @@
 <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
 
 
-<!-- 这里改成你的Giscus代码 -->
-<!-- <script src="https://giscus.app/client.js"
-        data-repo="HobbitQia/notebook"
-        data-repo-id="R_kgDOHtZjDg"
-        data-category="General"
-        data-category-id="DIC_kwDOHtZjDs4CQZ7Z"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="light"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script> -->
-
 <script src="https://giscus.app/client.js"
-        data-repo="Thorin215/NotePage"
-        data-repo-id="R_kgDOLQDlrg"
+        data-repo="Thorin215/note"
+        data-repo-id="R_kgDOLQC9Lw"
         data-category="General"
-        data-category-id="DIC_kwDOLQDlrs4CeVmM"
+        data-category-id="DIC_kwDOLQC9L84DCxrr"
         data-mapping="pathname"
         data-strict="0"
         data-reactions-enabled="1"
@@ -44,27 +27,22 @@
 
 <!-- Reload on palette change -->
 <script>
-    var palette = __md_get("__palette")
-    if (palette && typeof palette.color === "object")
-        if (palette.color.scheme === "slate") {
-            var giscus = document.querySelector("script[src*=giscus]")
-            giscus.setAttribute("data-theme", "dark")
-        }
-
-    /* Register event handlers after documented loaded */
     document.addEventListener("DOMContentLoaded", function () {
         var ref = document.querySelector("[data-md-component=palette]")
+        if (!ref) return
+
         ref.addEventListener("change", function () {
             var palette = __md_get("__palette")
             if (palette && typeof palette.color === "object") {
                 var theme = palette.color.scheme === "slate" ? "dark" : "light"
 
-                /* Instruct Giscus to change theme */
                 var frame = document.querySelector(".giscus-frame")
-                frame.contentWindow.postMessage(
-                    { giscus: { setConfig: { theme } } },
-                    "https://giscus.app"
-                )
+                if (frame && frame.contentWindow) {
+                    frame.contentWindow.postMessage(
+                        { giscus: { setConfig: { theme } } },
+                        "https://giscus.app"
+                    )
+                }
             }
         })
     })
